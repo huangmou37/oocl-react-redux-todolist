@@ -36,10 +36,10 @@ function TodoApp(props) {
           renders the first one that matches the current URL. */}
       <Switch>
         <Route path="/todo">
-          <Todo />
+          <Show completed={false}/>
         </Route>
         <Route path="/done">
-          <Done />
+          <Show completed={true}/>
         </Route>
         <Route path="/">
           <Show />
@@ -61,8 +61,9 @@ const retrieveTodos = (props) => {
     });
 };
 
-function Show() {
-  return <Row
+function Show(props) {
+  return (
+    <Row
       justify="center"
       align="middle"
       gutter={[0, 20]}
@@ -92,19 +93,19 @@ function Show() {
           <TodoForm />
         </Card>
       </Col>
-      </Row>;
-}
-
-function All() {
-  return (<div><TodoForm /><TodoList /></div>);
-}
-
-function Todo() {
-  return (<div><TodoForm /><TodoList status={false}/></div>);
-}
-
-function Done() {
-  return <TodoList status={true}/>;
+      <Col
+        xs={{ span: 23 }}
+        sm={{ span: 23 }}
+        md={{ span: 21 }}
+        lg={{ span: 20 }}
+        xl={{ span: 18 }}
+      >
+        <Card title="Todo List">
+          <TodoList status={props.completed}/>
+        </Card>
+      </Col>
+    </Row>
+    );
 }
 
 const mapDispatchToProps = {
