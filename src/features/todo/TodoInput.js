@@ -7,8 +7,8 @@ function TodoInput(props) {
 
     return (
         <div>
-            <input value={props.defaultValue} onBlur={(e) => setContent(e.target.value)}/>
-            <button onClick={(e) => {props.addItem(content)}}>+</button>
+            <input value={content} onChange={(e) => setContent(e.target.value)}/>
+            <button onClick={() => {props.addItem(content); setContent('');}}>+</button>
         </div>
     );
 }

@@ -6,8 +6,14 @@ export const addTodoAction = createAction('ADD', (itemContent) => ({
     }
 }));
 
+export const deleteTodoAction = createAction('DELETE', (willDeleteItem) => ({
+    payload: {
+        item: willDeleteItem
+    }
+}));
+
 export const checkTodoAction = createAction('CHECK', (checkedItem) => ({
     payload: {
-        checkedItem: checkedItem
+        item: checkedItem
     }
 }));

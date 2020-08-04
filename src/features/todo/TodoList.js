@@ -8,7 +8,7 @@ function TodoList(props) {
         <div>
             {
                 props.todoList.map(item => (
-                    <TodoItem content={item.content} key={item.id}/>
+                    <TodoItem item={item} key={item.id}/>
                 ))
             }
         </div>
@@ -16,7 +16,6 @@ function TodoList(props) {
 }
 
 const mapStateToProps = state => {
-    console.log('state: ' + JSON.stringify(state));
     const todoList = state.todoList
     return { todoList }
   };
