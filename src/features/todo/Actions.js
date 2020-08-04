@@ -6,15 +6,14 @@ export const addTodoAction = createAction('ADD', (itemContent) => ({
     }
 }));
 
-export const deleteTodoAction = createAction('DELETE', (willDeleteItem) => ({
+export const deleteTodoAction = createAction('DELETE', (id) => ({
     payload: {
-        item: willDeleteItem
+        id: id
     }
 }));
 
-export const checkTodoAction = createAction('CHECK', (checkedItem) => ({
+export const checkTodoAction = createAction('CHECK', (id) => ({
     payload: {
-        item: checkedItem,
-        timestamp: new Date().toLocaleString()
+        id: id
     }
 }));

@@ -1,7 +1,6 @@
 import React from 'react';
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
-import DoneList from './DoneList';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,10 +18,10 @@ function TodoApp() {
             <Link to="/">All</Link>
           </li>
           <li>
-            <Link to="/todo">TODO Items</Link>
+            <Link to="/todo">TODO</Link>
           </li>
           <li>
-            <Link to="/done">Done Items</Link>
+            <Link to="/done">Done</Link>
           </li>
         </ul>
       </nav>
@@ -46,15 +45,15 @@ function TodoApp() {
 }
 
 function All() {
-  return (<div><TodoInput /><TodoList /><DoneList /></div>);
+  return (<div><TodoInput /><TodoList status={true}/><TodoList status={false}/></div>);
 }
 
 function Todo() {
-  return (<div><TodoInput /><TodoList /></div>);
+  return (<div><TodoInput /><TodoList status={true}/></div>);
 }
 
 function Done() {
-  return <DoneList />;
+  return <TodoList status={false}/>;
 }
 
 export default TodoApp;
