@@ -1,8 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const addTodoAction = createAction('ADD', (itemContent) => ({
+export const addTodoAction = createAction('ADD', (item) => ({
     payload: {
-        itemContent: itemContent
+        item: item
     }
 }));
 

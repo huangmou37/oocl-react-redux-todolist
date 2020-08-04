@@ -10,7 +10,7 @@ export default createReducer(
     initState,
     {
         [addTodoAction]: (state, action) => ({
-            todoList: state.todoList.concat({id: state.nextItemId, content: action.payload.itemContent, status: true}),
+            todoList: state.todoList.concat(action.payload.item),
             nextItemId: state.nextItemId + 1
         }),
         [deleteTodoAction]: (state, action) => ({
