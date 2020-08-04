@@ -1,30 +1,51 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { message } from 'antd';
+import { Tooltip, Tag, List, Button, Popconfirm, Switch } from 'antd';
+import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import {deleteTodoAction, checkTodoAction} from '../../actions/todoActions';
 import TodoService from '../../services/TodoService';
 
 function TodoItem(props) {
-    const isDone = props.item.status;
-    const itemStyle = isDone ? {textDecorationLine: 'line-through'} : {};
+    const isCompleted = props.item.status;
+    const item = props.item;
 
     return (
-        <div>
-            <label style={itemStyle}>{props.item.content}</label>
-            {
-                isDone ? null : (
-                    <React.Fragment>
-                    <button onClick={() => checkItem(props, props.item)}>✓</button>
-                    <button onClick={() => removeItem(props, props.item.id)}>✗</button>
-                    </React.Fragment>
-                )
-            }
-            
-        </div>
-    );
+        <List.Item
+            actions={[
+            <Tooltip
+                title={isCompleted ? 'Mark as uncompleted' : 'Mark as completed'}
+            >
+                <Switch
+                checkedChildren={<CheckOutlined />}
+                unCheckedChildren={<CloseOutlined />}
+                onChange={() => toggleItem(item)}
+                defaultChecked={item.status}
+                />
+            </Tooltip>,
+            <Popconfirm
+                title="Are you sure you want to delete?"
+                onConfirm={() => {
+                    removeItem(props, item.id);
+                }}
+            >
+                <Button className="remove-todo-button" type="primary" danger>
+                X
+                </Button>
+            </Popconfirm>,
+            ]}
+            className="list-item"
+            key={item.id}
+        >
+            <div className="todo-item">
+            <Tag color={item.status ? 'cyan' : 'red'} className="todo-tag">
+                {item.content}
+            </Tag>
+            </div>
+        </List.Item>);
 }
 
-function checkItem(props, item) {
+function toggleItem(props, item) {
     const updatedItem = {
         ...item,
         status: true
