@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Menu } from 'antd';
 import { Row, Col, Card } from 'antd';
 import TodoForm from '../../components/TodoForm';
 import TodoList from '../../components/TodoList';
@@ -17,35 +18,48 @@ function TodoApp(props) {
 
   return (
     <Router>
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">All</Link>
-          </li>
-          <li>
-            <Link to="/todo">TODO</Link>
-          </li>
-          <li>
-            <Link to="/done">Done</Link>
-          </li>
-        </ul>
-      </nav>
-
+      <Row
+        justify="center"
+        align="middle"
+        gutter={[0, 20]}
+        className="todos-container"
+      >
+        <Col
+          xs={{ span: 23 }}
+          sm={{ span: 23 }}
+          md={{ span: 21 }}
+          lg={{ span: 20 }}
+          xl={{ span: 18 }}
+        >
+          <Menu theme="dark" defaultSelectedKeys={['1']} mode="horizontal">
+            <Menu.Item key="1">
+                <span>All</span>
+                <Link to="/" />
+            </Menu.Item>
+            <Menu.Item key="2">
+                <span>In-progress</span>
+                <Link to="/in-progress" />
+            </Menu.Item>
+            <Menu.Item key="3">
+                <span>Completed</span>
+                <Link to="/completed" />
+            </Menu.Item>
+          </Menu>
+        </Col>
+      </Row>
       {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
       <Switch>
-        <Route path="/todo">
+        <Route path="/in-progress">
           <Show completed={false}/>
         </Route>
-        <Route path="/done">
+        <Route path="/completed">
           <Show completed={true}/>
         </Route>
         <Route path="/">
           <Show />
         </Route>
       </Switch>
-    </div>
   </Router>
   );
 }
