@@ -1,4 +1,4 @@
-import { configureStore, createStore } from '@reduxjs/toolkit';
+import { createStore } from '@reduxjs/toolkit';
 // import counterReducer from '../features/counter/counterSlice';
 import todoReducer from '../features/todo/Reducers';
 
@@ -9,4 +9,5 @@ import todoReducer from '../features/todo/Reducers';
 //   },
 // });
 
-export default createStore(todoReducer);
+export default createStore(todoReducer, /* preloadedState, */
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
