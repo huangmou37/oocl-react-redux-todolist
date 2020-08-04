@@ -5,6 +5,7 @@ import FinishedTodoItem from './FinishedTodoItem';
 function FinishedTodoList(props) {
     return (
         <div>
+            <label>Done items: </label>
             {
                 props.finishedTodoList.map(item => (
                     <FinishedTodoItem item={item} key={item.id}/>

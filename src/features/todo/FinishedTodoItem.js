@@ -1,20 +1,11 @@
 import React from 'react';
-import {connect} from 'react-redux';
-// import {deleteTodoAction} from '../todo/Actions';
 
 function FinishTodoItem(props) {
     return (
         <div>
-            <label>{props.item.content}</label>
-            {/* <button onClick={props.deleteItem(props.item)}>X</button> */}
+            <label style={{textDecorationLine: 'line-through'}}>{props.item.content}</label>
         </div>
     );
 }
-
-// const mapDispatchToProps = {
-//     deleteItem: deleteTodoAction
-// };
-
-// export default connect(null, mapDispatchToProps)(FinishTodoItem);
 
 export default FinishTodoItem;

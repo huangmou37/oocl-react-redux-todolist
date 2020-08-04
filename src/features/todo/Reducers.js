@@ -22,7 +22,7 @@ export default createReducer(
         }),
         [checkTodoAction]: (state, action) => ({
             todoList: state.todoList.filter(item => item.id !== action.payload.item.id),
-            finishedTodoList: state.finishedTodoList.concat(action.payload.ItemItem),
+            finishedTodoList: state.finishedTodoList.concat(action.payload.item),
             nextItemId: state.nextItemId
         })
     } 

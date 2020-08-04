@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import TodoItem from './TodoItem';
 
 function TodoList(props) {
-    console.log(props);
     return (
         <div>
+            <label>TODO list: </label>
             {
                 props.todoList.map(item => (
                     <TodoItem item={item} key={item.id}/>

@@ -6,8 +6,8 @@ function TodoItem(props) {
     return (
         <div>
             <label>{props.item.content}</label>
-            <button onClick={() => props.checkItem(props.item)}>Done</button>
-            <button onClick={() => props.deleteItem(props.item)}>X</button>
+            <button onClick={() => props.checkItem(props.item)}>✓</button>
+            <button onClick={() => props.deleteItem(props.item)}>✗</button>
         </div>
     );
 }
