@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import TodoItem from './TodoItem';
+import TodoItem from '../TodoItem';
 
 function TodoList(props) {
     let todoList;

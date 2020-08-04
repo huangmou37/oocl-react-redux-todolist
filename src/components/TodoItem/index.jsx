@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {deleteTodoAction, checkTodoAction} from './Actions';
-import TodoService from './services/TodoService';
+import {deleteTodoAction, checkTodoAction} from '../../actions/todoActions';
+import TodoService from '../../services/TodoService';
 
 function TodoItem(props) {
     const isDone = props.item.status;

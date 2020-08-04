@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {addTodoAction} from './Actions';
-import TodoService from './services/TodoService';
+import {addTodoAction} from '../../actions/todoActions';
+import TodoService from '../../services/TodoService';
 
-function TodoInput(props) {
+function TodoForm(props) {
     const [content, setContent] = useState('');
 
     return (
@@ -35,5 +35,5 @@ const mapDispatchToProps = {
     addItem: addTodoAction
 };
 
-export default connect(null, mapDispatchToProps)(TodoInput);
+export default connect(null, mapDispatchToProps)(TodoForm);
 

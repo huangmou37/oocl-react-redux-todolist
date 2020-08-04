@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import {todoStore} from './app/store';
-import TodoApp from './features/todo/TodoApp';
+import {todoStore} from './store/todoStore';
+import TodoApp from './containers/todo';
 
 function App() {
   return (

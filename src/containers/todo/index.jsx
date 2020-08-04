@@ -1,15 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import TodoInput from './TodoInput';
-import TodoList from './TodoList';
+import TodoForm from '../../components/TodoForm';
+import TodoList from '../../components/TodoList';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-import TodoService from './services/TodoService';
-import { loadAllTodosAction } from './Actions';
+import TodoService from '../../services/TodoService';
+import { loadAllTodosAction } from '../../actions/todoActions';
 
 function TodoApp(props) {
   retrieveTodos(props);
@@ -61,11 +61,11 @@ const retrieveTodos = (props) => {
 };
 
 function All() {
-  return (<div><TodoInput /><TodoList /></div>);
+  return (<div><TodoForm /><TodoList /></div>);
 }
 
 function Todo() {
-  return (<div><TodoInput /><TodoList status={false}/></div>);
+  return (<div><TodoForm /><TodoList status={false}/></div>);
 }
 
 function Done() {
