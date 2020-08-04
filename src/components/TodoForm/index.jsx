@@ -1,21 +1,43 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import { message } from 'antd';
+import { Form, Row, Col, Button, Input } from 'antd';
+import { PlusCircleFilled } from '@ant-design/icons';
 import {addTodoAction} from '../../actions/todoActions';
 import TodoService from '../../services/TodoService';
 
 function TodoForm(props) {
-    const [content, setContent] = useState('');
+    const [form] = Form.useForm();
+
+    const onFinish = (props) => {
+        const inputContent = form.getFieldValue('content')
+        addNewItem(props, inputContent);
+        form.resetFields();
+      };
 
     return (
-        <form onSubmit={(e) => e.preventDefault()}>
-            <input value={content} onChange={(e) => setContent(e.target.value)}/>
-            <button onClick={() => {addNewItem(props, content, () => setContent(''))}}>+</button>
-        </form>
+        <Form form={form} onFinish={() => onFinish(props)} layout="horizontal" className="todo-form">
+        <Row gutter={20}>
+            <Col xs={24} sm={24} md={17} lg={19} xl={20}>
+            <Form.Item
+                name={'content'}
+                rules={[{ required: true, message: 'This field is required' }]}
+            >
+                <Input placeholder="What needs to be done?" />
+            </Form.Item>
+            </Col>
+            <Col xs={24} sm={24} md={7} lg={5} xl={4}>
+            <Button type="primary" htmlType="submit" block>
+                <PlusCircleFilled />
+                Add todo
+            </Button>
+            </Col>
+        </Row>
+        </Form>
     );
 }
 
-function addNewItem(props, content, callback) {
+function addNewItem(props, content) {
     const newItem = {
         content: content,
         status: false
@@ -24,7 +46,6 @@ function addNewItem(props, content, callback) {
         .then(response => {
             console.log(`New item added: ${JSON.stringify(response.data)}`);
             props.addItem(response.data);
-            callback();
             message.success("Item added");
         })
         .catch(e => {

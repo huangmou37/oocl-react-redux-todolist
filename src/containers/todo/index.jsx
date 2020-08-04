@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Row, Col, Card, PageHeader } from 'antd';
 import TodoForm from '../../components/TodoForm';
 import TodoList from '../../components/TodoList';
 import {
@@ -41,7 +42,7 @@ function TodoApp(props) {
           <Done />
         </Route>
         <Route path="/">
-          <All />
+          <Show />
         </Route>
       </Switch>
     </div>
@@ -59,6 +60,40 @@ const retrieveTodos = (props) => {
       console.error(e);
     });
 };
+
+function Show() {
+  return <Row
+      justify="center"
+      align="middle"
+      gutter={[0, 20]}
+      className="todos-container"
+    >
+      <Col
+        xs={{ span: 23 }}
+        sm={{ span: 23 }}
+        md={{ span: 21 }}
+        lg={{ span: 20 }}
+        xl={{ span: 18 }}
+      >
+        <PageHeader
+          title="Add Todo"
+          subTitle="To add a todo, just fill the form below and click in add todo."
+        />
+      </Col>
+
+      <Col
+        xs={{ span: 23 }}
+        sm={{ span: 23 }}
+        md={{ span: 21 }}
+        lg={{ span: 20 }}
+        xl={{ span: 18 }}
+      >
+        <Card title="Create a new todo">
+          <TodoForm />
+        </Card>
+      </Col>
+      </Row>;
+}
 
 function All() {
   return (<div><TodoForm /><TodoList /></div>);
