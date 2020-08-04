@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {deleteTodoAction, checkTodoAction} from '../todo/Actions';
 
 function TodoItem(props) {
-    const isDone = !props.item.status;
+    const isDone = props.item.status;
     const itemStyle = isDone ? {textDecorationLine: 'line-through'} : {};
 
     return (

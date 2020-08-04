@@ -61,15 +61,15 @@ const retrieveTodos = (props) => {
 };
 
 function All() {
-  return (<div><TodoInput /><TodoList status={true}/><TodoList status={false}/></div>);
+  return (<div><TodoInput /><TodoList status={false}/><TodoList status={true}/></div>);
 }
 
 function Todo() {
-  return (<div><TodoInput /><TodoList status={true}/></div>);
+  return (<div><TodoInput /><TodoList status={false}/></div>);
 }
 
 function Done() {
-  return <TodoList status={false}/>;
+  return <TodoList status={true}/>;
 }
 
 const mapDispatchToProps = {

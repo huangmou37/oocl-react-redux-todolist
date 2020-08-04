@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import TodoItem from './TodoItem';
 
 function TodoList(props) {
-    const isShowDone = !props.status;
+    const isShowDone = props.status;
     const title = isShowDone ? 'Done' : 'TODO';
 
     return (
