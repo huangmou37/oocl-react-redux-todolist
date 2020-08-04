@@ -14,6 +14,7 @@ export const deleteTodoAction = createAction('DELETE', (willDeleteItem) => ({
 
 export const checkTodoAction = createAction('CHECK', (checkedItem) => ({
     payload: {
-        item: checkedItem
+        item: checkedItem,
+        timestamp: new Date().toLocaleString()
     }
 }));

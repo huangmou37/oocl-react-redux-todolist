@@ -5,7 +5,7 @@ import DoneItem from './DoneItem';
 function DoneList(props) {
     return (
         <div>
-            <label>Done items: </label>
+            <h1>Done items</h1>
             {
                 props.doneList.map(item => (
                     <DoneItem item={item} key={item.id}/>

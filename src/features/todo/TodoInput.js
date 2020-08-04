@@ -6,10 +6,10 @@ function TodoInput(props) {
     const [content, setContent] = useState('');
 
     return (
-        <div>
+        <form onSubmit={(e) => e.preventDefault()}>
             <input value={content} onChange={(e) => setContent(e.target.value)}/>
             <button onClick={() => {props.addItem(content); setContent('');}}>+</button>
-        </div>
+        </form>
     );
 }
 

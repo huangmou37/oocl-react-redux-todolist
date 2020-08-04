@@ -22,7 +22,7 @@ export default createReducer(
         }),
         [checkTodoAction]: (state, action) => ({
             todoList: state.todoList.filter(item => item.id !== action.payload.item.id),
-            doneList: state.doneList.concat(action.payload.item),
+            doneList: state.doneList.concat({...action.payload.item, timestamp: action.payload.timestamp}),
             nextItemId: state.nextItemId
         })
     } 
