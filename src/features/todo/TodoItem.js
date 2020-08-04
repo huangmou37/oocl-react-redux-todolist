@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {deleteTodoAction, checkTodoAction} from '../todo/Actions';
+import {deleteTodoAction, checkTodoAction} from './Actions';
+import TodoService from './services/TodoService';
 
 function TodoItem(props) {
     const isDone = props.item.status;
@@ -13,13 +14,25 @@ function TodoItem(props) {
                 isDone ? null : (
                     <React.Fragment>
                     <button onClick={() => props.checkItem(props.item.id)}>✓</button>
-                    <button onClick={() => props.deleteItem(props.item.id)}>✗</button>
+                    <button onClick={() => removeItem(props, props.item.id)}>✗</button>
                     </React.Fragment>
                 )
             }
             
         </div>
     );
+}
+
+function removeItem(props, id) {
+    TodoService.remove(id)
+        .then(response => {
+            console.log(`Item removed: ${id}`);
+            props.deleteItem(props.item.id);
+        })
+        .catch(e => {
+            console.error(e);
+            alert("Failed to remove TODO item.");
+        });
 }
 
 const mapDispatchToProps = {
