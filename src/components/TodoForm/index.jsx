@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
+import { message } from 'antd';
 import {addTodoAction} from '../../actions/todoActions';
 import TodoService from '../../services/TodoService';
 
@@ -24,10 +25,11 @@ function addNewItem(props, content, callback) {
             console.log(`New item added: ${JSON.stringify(response.data)}`);
             props.addItem(response.data);
             callback();
+            message.success("Item added");
         })
         .catch(e => {
             console.error(e);
-            alert("Failed to add new TODO item.");
+            message.error("Failed to add item");
         });
 }
 

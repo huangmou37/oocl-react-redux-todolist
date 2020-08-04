@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { message } from 'antd';
 import {deleteTodoAction, checkTodoAction} from '../../actions/todoActions';
 import TodoService from '../../services/TodoService';
 
@@ -30,24 +31,22 @@ function checkItem(props, item) {
     };
     TodoService.update(updatedItem.id, updatedItem)
         .then(_ => {
-            console.log(`Item done: ${updatedItem.id}`);
             props.checkItem(updatedItem.id);
+            message.success("Item done");
         })
         .catch(e => {
-            console.error(e);
-            alert("Failed to update TODO item.");
+            message.error("Failed to mark item as done");
         });
 }
 
 function removeItem(props, id) {
     TodoService.remove(id)
         .then(_ => {
-            console.log(`Item removed: ${id}`);
             props.deleteItem(props.item.id);
+            message.success('Item removed');
         })
         .catch(e => {
-            console.error(e);
-            alert("Failed to remove TODO item.");
+            message.error("Failed to remove item");
         });
 }
 
