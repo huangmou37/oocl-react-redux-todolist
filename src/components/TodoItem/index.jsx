@@ -19,7 +19,7 @@ function TodoItem(props) {
                 <Switch
                 checkedChildren={<CheckOutlined />}
                 unCheckedChildren={<CloseOutlined />}
-                onChange={() => toggleItem(item)}
+                onChange={() => toggleItem(props, item)}
                 defaultChecked={item.status}
                 />
             </Tooltip>,
@@ -48,15 +48,14 @@ function TodoItem(props) {
 function toggleItem(props, item) {
     const updatedItem = {
         ...item,
-        status: true
+        status: !item.status
     };
     TodoService.update(updatedItem.id, updatedItem)
         .then(_ => {
-            props.checkItem(updatedItem.id);
-            message.success("Item done");
+            props.toggleItem(updatedItem.id);
         })
         .catch(e => {
-            message.error("Failed to mark item as done");
+            message.error("Failed to toggle item status");
         });
 }
 
@@ -73,7 +72,7 @@ function removeItem(props, id) {
 
 const mapDispatchToProps = {
     deleteItem: deleteTodoAction,
-    checkItem: checkTodoAction
+    toggleItem: checkTodoAction
 };
 
 export default connect(null, mapDispatchToProps)(TodoItem);

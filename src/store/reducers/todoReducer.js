@@ -21,7 +21,7 @@ export default createReducer(
         }),
         [checkTodoAction]: (state, action) => ({
             todoList: state.todoList.map(
-                item => item.id === action.payload.id ? { ...item, status: true } : item
+                item => item.id === action.payload.id ? { ...item, status: !item.status } : item
             )
         }),
         [loadAllTodosAction]: (_, action) => ({
