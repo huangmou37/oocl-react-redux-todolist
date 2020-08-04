@@ -20,7 +20,7 @@ function addNewItem(props, content, callback) {
     };
     TodoService.create(postRequestBody)
         .then(response => {
-            console.log("New item added: %s", JSON.stringify(response.data));
+            console.log(`New item added: ${JSON.stringify(response.data)}`);
             props.addItem(response.data);
             callback();
         })

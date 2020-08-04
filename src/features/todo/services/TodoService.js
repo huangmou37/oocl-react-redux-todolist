@@ -16,9 +16,9 @@ const create = data => {
 //   return http.put(`/todos/${id}`, data);
 // };
 
-// const remove = id => {
-//   return http.delete(`/todos/${id}`);
-// };
+const remove = id => {
+  return http.delete(`/todos/${id}`);
+};
 
 // const removeAll = () => {
 //   return http.delete(`/todos`);
@@ -31,9 +31,9 @@ const create = data => {
 export default {
   getAll,
 //   get,
-  create
+  create,
 //   update,
-//   remove,
+  remove
 //   removeAll,
 //   findByTitle
 };
