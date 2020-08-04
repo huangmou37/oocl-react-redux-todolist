@@ -19,7 +19,7 @@ export default createReducer(
                 item => item.id === action.payload.id ? {...item, status: true} : item
             )
         }),
-        [loadAllTodosAction]: (state, action) => ({
+        [loadAllTodosAction]: (_, action) => ({
             todoList: action.payload.todoList
         })
     } 

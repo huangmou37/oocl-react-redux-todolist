@@ -29,7 +29,7 @@ function checkItem(props, item) {
         status: true
     };
     TodoService.update(updatedItem.id, updatedItem)
-        .then(response => {
+        .then(_ => {
             console.log(`Item done: ${updatedItem.id}`);
             props.checkItem(updatedItem.id);
         })
@@ -41,7 +41,7 @@ function checkItem(props, item) {
 
 function removeItem(props, id) {
     TodoService.remove(id)
-        .then(response => {
+        .then(_ => {
             console.log(`Item removed: ${id}`);
             props.deleteItem(props.item.id);
         })
