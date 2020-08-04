@@ -61,7 +61,7 @@ const retrieveTodos = (props) => {
 };
 
 function All() {
-  return (<div><TodoInput /><TodoList status={false}/><TodoList status={true}/></div>);
+  return (<div><TodoInput /><TodoList /></div>);
 }
 
 function Todo() {

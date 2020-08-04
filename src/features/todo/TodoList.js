@@ -3,14 +3,18 @@ import { connect } from 'react-redux';
 import TodoItem from './TodoItem';
 
 function TodoList(props) {
-    const isShowDone = props.status;
-    const title = isShowDone ? 'Done' : 'TODO';
+    let todoList;
+    if (props.status === undefined) {
+        todoList = props.todoList;
+    } else {
+        todoList = props.todoList.filter(item => item.status === props.status);
+    }
 
     return (
         <div>
-            <h1>{title}</h1>
+            <h1>Todo List</h1>
             {
-                props.todoList.filter(item => item.status === props.status).map(item => (
+                todoList.map(item => (
                     <TodoItem item={item} status={props.status} key={item.id}/>
                 ))
             }
