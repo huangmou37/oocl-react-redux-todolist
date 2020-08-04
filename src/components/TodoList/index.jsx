@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { List } from 'antd';
 import TodoItem from '../TodoItem';
 
 function TodoList(props) {
@@ -11,14 +12,17 @@ function TodoList(props) {
     }
 
     return (
-        <div>
-            <h1>Todo List</h1>
-            {
-                todoList.map(item => (
-                    <TodoItem item={item} status={props.status} key={item.id}/>
-                ))
-            }
-        </div>
+        <List
+            locale={{
+                emptyText: "There's nothing to do :("
+            }}
+            dataSource={todoList}
+            renderItem={todo => (<TodoItem item={todo} />)}
+            pagination={{
+                position: 'bottom',
+                pageSize: 10
+            }}
+        />
     );
 }
 
