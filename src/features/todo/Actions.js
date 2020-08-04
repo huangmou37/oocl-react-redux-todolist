@@ -17,3 +17,9 @@ export const checkTodoAction = createAction('CHECK', (id) => ({
         id: id
     }
 }));
+
+export const loadAllTodosAction = createAction('LOAD_ALL', (todoList) => ({
+    payload: {
+        todoList: todoList
+    }
+}));

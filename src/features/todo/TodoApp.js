@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 import {
@@ -7,8 +8,12 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import TodoService from './services/TodoService';
+import { loadAllTodosAction } from './Actions';
 
-function TodoApp() {
+function TodoApp(props) {
+  retrieveTodos(props);
+
   return (
     <Router>
     <div>
@@ -44,6 +49,17 @@ function TodoApp() {
   );
 }
 
+const retrieveTodos = (props) => {
+  TodoService.getAll()
+    .then(response => {
+      // console.log(response.data);
+      props.loadAll(response.data);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+};
+
 function All() {
   return (<div><TodoInput /><TodoList status={true}/><TodoList status={false}/></div>);
 }
@@ -56,4 +72,8 @@ function Done() {
   return <TodoList status={false}/>;
 }
 
-export default TodoApp;
+const mapDispatchToProps = {
+  loadAll: loadAllTodosAction
+};
+
+export default connect(null, mapDispatchToProps)(TodoApp);

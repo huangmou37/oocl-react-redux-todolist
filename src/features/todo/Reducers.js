@@ -1,5 +1,5 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {addTodoAction, checkTodoAction, deleteTodoAction} from './Actions';
+import {addTodoAction, checkTodoAction, deleteTodoAction, loadAllTodosAction} from './Actions';
 
 const initState = {
     nextItemId: 1,
@@ -21,6 +21,10 @@ export default createReducer(
             todoList: state.todoList.map(
                 item => item.id === action.payload.id ? {...item, status: false} : item
             ),
+            nextItemId: state.nextItemId
+        }),
+        [loadAllTodosAction]: (state, action) => ({
+            todoList: action.payload.todoList,
             nextItemId: state.nextItemId
         })
     } 
