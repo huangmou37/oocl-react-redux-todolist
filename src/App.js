@@ -1,14 +1,10 @@
 import React from 'react';
-import TodoInput from './features/todo/TodoInput';
-import TodoList from './features/todo/TodoList';
-import FinishedTodoList from './features/todo/FinishedTodoList';
+import TodoApp from './features/todo/TodoApp';
 
 function App() {
   return (
     <div className="App">
-      <TodoInput />
-      <TodoList />
-      <FinishedTodoList />
+      <TodoApp />
     </div>
   );
 }

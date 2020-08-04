@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FinishTodoItem(props) {
+function DoneItem(props) {
     return (
         <div>
             <label style={{textDecorationLine: 'line-through'}}>{props.item.content}</label>
@@ -8,4 +8,4 @@ function FinishTodoItem(props) {
     );
 }
 
-export default FinishTodoItem;
+export default DoneItem;

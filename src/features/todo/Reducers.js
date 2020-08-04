@@ -4,7 +4,7 @@ import {addTodoAction, checkTodoAction, deleteTodoAction} from './Actions';
 const initState = {
     nextItemId: 1,
     todoList: [],
-    finishedTodoList: []
+    doneList: []
 };
 
 export default createReducer(
@@ -12,17 +12,17 @@ export default createReducer(
     {
         [addTodoAction]: (state, action) => ({
             todoList: state.todoList.concat({id: state.nextItemId, content: action.payload.itemContent}),
-            finishedTodoList: state.finishedTodoList,
+            doneList: state.doneList,
             nextItemId: state.nextItemId + 1
         }),
         [deleteTodoAction]: (state, action) => ({
             todoList: state.todoList.filter(item => item.id !== action.payload.item.id),
-            finishedTodoList: state.finishedTodoList,
+            doneList: state.doneList,
             nextItemId: state.nextItemId
         }),
         [checkTodoAction]: (state, action) => ({
             todoList: state.todoList.filter(item => item.id !== action.payload.item.id),
-            finishedTodoList: state.finishedTodoList.concat(action.payload.item),
+            doneList: state.doneList.concat(action.payload.item),
             nextItemId: state.nextItemId
         })
     } 
