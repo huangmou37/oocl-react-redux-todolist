@@ -9,5 +9,5 @@ import todoReducer from '../features/todo/Reducers';
 //   },
 // });
 
-export default createStore(todoReducer, /* preloadedState, */
+export const todoStore = createStore(todoReducer, /* preloadedState, */
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
