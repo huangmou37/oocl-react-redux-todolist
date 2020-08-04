@@ -13,7 +13,7 @@ function TodoItem(props) {
             {
                 isDone ? null : (
                     <React.Fragment>
-                    <button onClick={() => props.checkItem(props.item.id)}>✓</button>
+                    <button onClick={() => checkItem(props, props.item)}>✓</button>
                     <button onClick={() => removeItem(props, props.item.id)}>✗</button>
                     </React.Fragment>
                 )
@@ -21,6 +21,22 @@ function TodoItem(props) {
             
         </div>
     );
+}
+
+function checkItem(props, item) {
+    const updatedItem = {
+        ...item,
+        status: true
+    };
+    TodoService.update(updatedItem.id, updatedItem)
+        .then(response => {
+            console.log(`Item done: ${updatedItem.id}`);
+            props.checkItem(updatedItem.id);
+        })
+        .catch(e => {
+            console.error(e);
+            alert("Failed to update TODO item.");
+        });
 }
 
 function removeItem(props, id) {
