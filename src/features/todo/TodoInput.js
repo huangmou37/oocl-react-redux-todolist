@@ -15,10 +15,11 @@ function TodoInput(props) {
 }
 
 function addNewItem(props, content, callback) {
-    const postRequestBody = {
-        content: content
+    const newItem = {
+        content: content,
+        status: false
     };
-    TodoService.create(postRequestBody)
+    TodoService.create(newItem)
         .then(response => {
             console.log(`New item added: ${JSON.stringify(response.data)}`);
             props.addItem(response.data);
